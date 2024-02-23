@@ -1,6 +1,7 @@
 package org.zerock.jdbcex.dao;
 
 import lombok.Cleanup;
+import lombok.extern.log4j.Log4j2;
 import org.zerock.jdbcex.domain.TodoVO;
 
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class TodoDAO {
 
   public String getTime(){

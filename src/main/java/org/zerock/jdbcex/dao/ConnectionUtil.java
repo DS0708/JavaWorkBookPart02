@@ -3,7 +3,6 @@ package org.zerock.jdbcex.dao;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.Properties;
@@ -18,7 +17,9 @@ public enum ConnectionUtil {
     try {
       // 설정 파일 로드
       props = new Properties();
-      props.load(new FileInputStream("application.properties")); //IOException 발생 가능
+      // 클래스패스에서 'application-db.properties' 파일 로드
+      props.load(ConnectionUtil.class.getResourceAsStream("/application-db.properties"));
+
       // 프로퍼티 사용하여 연결 정보 설정
       String dbUrl = props.getProperty("db.url");
       String dbUser = props.getProperty("db.user");

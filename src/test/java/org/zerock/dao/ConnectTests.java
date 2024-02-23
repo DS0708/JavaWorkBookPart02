@@ -5,6 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.zerock.jdbcex.dao.ConnectionUtil;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -20,7 +21,7 @@ public class ConnectTests {
   @BeforeEach
   public void ready() throws Exception{
     // 설정 파일 로드
-    props.load(new FileInputStream("application.properties"));
+    props.load(ConnectionUtil.class.getResourceAsStream("/application-db.properties"));
     // 프로퍼티 사용하여 연결 정보 설정
     dbUrl = props.getProperty("db.url");
     dbUser = props.getProperty("db.user");
